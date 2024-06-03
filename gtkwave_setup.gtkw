@@ -1,0 +1,80 @@
+[*]
+[*] GTKWave Analyzer v3.3.118 (w)1999-2023 BSI
+[*] Mon Jun  3 03:35:08 2024
+[*]
+[dumpfile] "/home/charlie/Workspace/pq_research/my_hwpq/tb_open_list_queue.vcd"
+[dumpfile_mtime] "Mon Jun  3 03:31:55 2024"
+[dumpfile_size] 12840
+[savefile] "/home/charlie/Workspace/pq_research/my_hwpq/gtkwave_setup.gtkw"
+[timestart] 0
+[size] 2532 1334
+[pos] -1496 -935
+*-14.877316 87700 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] TOP.
+[treeopen] TOP.tb_open_list_queue.
+[treeopen] TOP.tb_open_list_queue.u_open_list_queue.
+[sst_width] 323
+[signals_width] 418
+[sst_expanded] 1
+[sst_vpaned_height] 659
+@28
+TOP.tb_open_list_queue.u_open_list_queue.CLK
+TOP.tb_open_list_queue.u_open_list_queue.RSTn
+TOP.tb_open_list_queue.u_open_list_queue.i_wrt
+TOP.tb_open_list_queue.u_open_list_queue.i_read
+@100000028
+TOP.tb_open_list_queue.u_open_list_queue.next_state[2:0]
+@28
+TOP.tb_open_list_queue.u_open_list_queue.current_state[2:0]
+@22
+TOP.tb_open_list_queue.u_open_list_queue.ib_count[31:0]
+TOP.tb_open_list_queue.u_open_list_queue.ob_count[31:0]
+@24
+[color] 2
+TOP.tb_open_list_queue.u_open_list_queue.i_node_f[31:0]
+@25
+[color] 1
+TOP.tb_open_list_queue.u_open_list_queue.o_node_f[31:0]
+@24
+[color] 7
+TOP.tb_open_list_queue.u_open_list_queue.IB[0].f[31:0]
+[color] 7
+TOP.tb_open_list_queue.u_open_list_queue.IB[1].f[31:0]
+[color] 7
+TOP.tb_open_list_queue.u_open_list_queue.IB[2].f[31:0]
+[color] 7
+TOP.tb_open_list_queue.u_open_list_queue.IB[3].f[31:0]
+[color] 7
+TOP.tb_open_list_queue.u_open_list_queue.IB[4].f[31:0]
+[color] 7
+TOP.tb_open_list_queue.u_open_list_queue.IB[5].f[31:0]
+[color] 7
+TOP.tb_open_list_queue.u_open_list_queue.IB[6].f[31:0]
+[color] 7
+TOP.tb_open_list_queue.u_open_list_queue.IB[7].f[31:0]
+[color] 7
+TOP.tb_open_list_queue.u_open_list_queue.IB[8].f[31:0]
+[color] 7
+TOP.tb_open_list_queue.u_open_list_queue.IB[9].f[31:0]
+[color] 3
+TOP.tb_open_list_queue.u_open_list_queue.OB[0].f[31:0]
+[color] 3
+TOP.tb_open_list_queue.u_open_list_queue.OB[1].f[31:0]
+[color] 3
+TOP.tb_open_list_queue.u_open_list_queue.OB[2].f[31:0]
+[color] 3
+TOP.tb_open_list_queue.u_open_list_queue.OB[3].f[31:0]
+[color] 3
+TOP.tb_open_list_queue.u_open_list_queue.OB[4].f[31:0]
+[color] 3
+TOP.tb_open_list_queue.u_open_list_queue.OB[5].f[31:0]
+[color] 3
+TOP.tb_open_list_queue.u_open_list_queue.OB[6].f[31:0]
+[color] 3
+TOP.tb_open_list_queue.u_open_list_queue.OB[7].f[31:0]
+[color] 3
+TOP.tb_open_list_queue.u_open_list_queue.OB[8].f[31:0]
+[color] 3
+TOP.tb_open_list_queue.u_open_list_queue.OB[9].f[31:0]
+[pattern_trace] 1
+[pattern_trace] 0
