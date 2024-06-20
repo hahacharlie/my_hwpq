@@ -44,7 +44,7 @@ Vtb_open_list_queue__Syms::Vtb_open_list_queue__Syms(VerilatedContext* contextp,
     , TOP{this, namep}
 {
         // Check resources
-        Verilated::stackCheck(114);
+        Verilated::stackCheck(58);
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-9);
     _vm_contextp__->timeprecision(-12);

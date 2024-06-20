@@ -11,12 +11,8 @@ void Vtb_open_list_queue___024root___ctor_var_reset(Vtb_open_list_queue___024roo
 Vtb_open_list_queue___024root::Vtb_open_list_queue___024root(Vtb_open_list_queue__Syms* symsp, const char* v__name)
     : VerilatedModule{v__name}
     , __VdlySched{*symsp->_vm_contextp__}
-    , __Vm_mtaskstate_5(1U)
-    , __Vm_mtaskstate_8(1U)
-    , __Vm_mtaskstate_4(1U)
-    , __Vm_mtaskstate_6(1U)
-    , __Vm_mtaskstate_3(1U)
-    , __Vm_mtaskstate_final__nba(5U)
+    , __Vm_mtaskstate_14(3U)
+    , __Vm_mtaskstate_final__nba(6U)
     , vlSymsp{symsp}
  {
     // Reset structure values

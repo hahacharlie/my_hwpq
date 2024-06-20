@@ -23,6 +23,10 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_open_list_queue VL_NOT_FINAL : public Ver
 
   public:
 
+    // CONSTEXPR CAPABILITIES
+    // Verilated with --trace?
+    static constexpr bool traceCapable = true;
+
     // PORTS
     // The application code writes and reads these signals to
     // propagate new values into/out from the Verilated model.

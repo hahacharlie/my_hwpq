@@ -38,7 +38,7 @@ VL_ATTR_COLD void Vtb_open_list_queue___024root___eval_settle(Vtb_open_list_queu
 #ifdef VL_DEBUG
             Vtb_open_list_queue___024root___dump_triggers__stl(vlSelf);
 #endif
-            VL_FATAL_MT("tb_open_list_queue.sv", 9, "", "Settle region did not converge.");
+            VL_FATAL_MT("tb_open_list_queue.sv", 6, "", "Settle region did not converge.");
         }
         __VstlIterCount = ((IData)(1U) + __VstlIterCount);
         __VstlContinue = 0U;
@@ -61,14 +61,10 @@ VL_ATTR_COLD void Vtb_open_list_queue___024root___dump_triggers__stl(Vtb_open_li
     if ((1ULL & vlSelf->__VstlTriggered.word(0U))) {
         VL_DBG_MSGF("         'stl' region trigger index 0 is active: Internal 'stl' trigger - first iteration\n");
     }
-    if ((2ULL & vlSelf->__VstlTriggered.word(0U))) {
-        VL_DBG_MSGF("         'stl' region trigger index 1 is active: @([hybrid] tb_open_list_queue.u_open_list_queue.OB or [hybrid] tb_open_list_queue.u_open_list_queue.IB)\n");
-    }
 }
 #endif  // VL_DEBUG
 
 VL_ATTR_COLD void Vtb_open_list_queue___024root___stl_sequent__TOP__0(Vtb_open_list_queue___024root* vlSelf);
-void Vtb_open_list_queue___024root___act_comb__TOP__1(Vtb_open_list_queue___024root* vlSelf);
 
 VL_ATTR_COLD void Vtb_open_list_queue___024root___eval_stl(Vtb_open_list_queue___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
@@ -77,17 +73,6 @@ VL_ATTR_COLD void Vtb_open_list_queue___024root___eval_stl(Vtb_open_list_queue__
     // Body
     if ((1ULL & vlSelf->__VstlTriggered.word(0U))) {
         Vtb_open_list_queue___024root___stl_sequent__TOP__0(vlSelf);
-        vlSelf->__Vm_traceActivity[6U] = 1U;
-        vlSelf->__Vm_traceActivity[5U] = 1U;
-        vlSelf->__Vm_traceActivity[4U] = 1U;
-        vlSelf->__Vm_traceActivity[3U] = 1U;
-        vlSelf->__Vm_traceActivity[2U] = 1U;
-        vlSelf->__Vm_traceActivity[1U] = 1U;
-        vlSelf->__Vm_traceActivity[0U] = 1U;
-    }
-    if ((3ULL & vlSelf->__VstlTriggered.word(0U))) {
-        Vtb_open_list_queue___024root___act_comb__TOP__1(vlSelf);
-        vlSelf->__Vm_traceActivity[6U] = 1U;
         vlSelf->__Vm_traceActivity[5U] = 1U;
         vlSelf->__Vm_traceActivity[4U] = 1U;
         vlSelf->__Vm_traceActivity[3U] = 1U;
@@ -102,38 +87,320 @@ VL_ATTR_COLD void Vtb_open_list_queue___024root___stl_sequent__TOP__0(Vtb_open_l
     Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root___stl_sequent__TOP__0\n"); );
     // Body
-    if ((1U & (~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state) 
-                  >> 2U)))) {
-        if ((2U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state))) {
-            if ((1U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state))) {
-                vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__STATE_OPERATION__DOT__unnamedblk2__DOT__itr = 9U;
-            }
-        }
-        if ((1U & (~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state) 
-                      >> 1U)))) {
-            if ((1U & (~ (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state)))) {
-                vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__STATE_OPERATION__DOT__unnamedblk1__DOT__itr = 0xaU;
-                vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__ob_count = 0U;
-                vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__valid = 0U;
-                vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__ib_count = 0U;
-            }
-        }
-    }
-    if ((4U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state))) {
-        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__next_state = 1U;
-    } else if ((2U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state))) {
+    vlSelf->tb_open_list_queue__DOT__o_ready_enq = 
+        (0U == vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__curr_state);
+    vlSelf->tb_open_list_queue__DOT__o_ready_deq = 
+        ((0U == vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__curr_state) 
+         || (1U == vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__curr_state));
+    if ((0U == vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__curr_state)) {
+        vlSelf->tb_open_list_queue__DOT__o_ready_rep = 1U;
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__next_size 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__curr_size;
         vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__next_state 
-            = ((1U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state))
-                ? 1U : ((9U == vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__ib_count)
-                         ? 1U : 3U));
-    } else if ((1U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state))) {
-        if (vlSelf->tb_open_list_queue__DOT__i_wrt) {
-            vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__next_state = 2U;
-        } else if (vlSelf->tb_open_list_queue__DOT__i_read) {
-            vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__next_state = 4U;
-        }
+            = ((1U & (IData)(vlSelf->tb_open_list_queue__DOT__i_read))
+                ? 1U : 0U);
     } else {
-        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__next_state = 1U;
+        vlSelf->tb_open_list_queue__DOT__o_ready_rep = 0U;
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__next_size 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__curr_size;
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__next_state = 0U;
+    }
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueue[0U] = 0xffffffffU;
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueue[1U] = 0xffffffffU;
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueue[2U] = 0xffffffffU;
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueue[3U] = 0xffffffffU;
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid = 0U;
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[0U] 
+        = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[0U];
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[1U] 
+        = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[1U];
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[2U] 
+        = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[2U];
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[3U] 
+        = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[3U];
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+        = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueueValid;
+    if (((IData)(vlSelf->tb_open_list_queue__DOT__i_wrt) 
+         & (IData)(vlSelf->tb_open_list_queue__DOT__i_read))) {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__next_size 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__curr_size;
+        if ((((vlSelf->tb_open_list_queue__DOT__i_node_f 
+               < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[0U]) 
+              & (vlSelf->tb_open_list_queue__DOT__i_node_f 
+                 < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[1U])) 
+             & ((~ (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueueValid)) 
+                | (vlSelf->tb_open_list_queue__DOT__i_node_f 
+                   < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[0U])))) {
+            vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[0U] 
+                = vlSelf->tb_open_list_queue__DOT__i_node_f;
+            vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+                = (1U | (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid));
+        } else {
+            vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueue[0U] 
+                = vlSelf->tb_open_list_queue__DOT__i_node_f;
+            vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid 
+                = (1U | (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid));
+            vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[0U] = 0xffffffffU;
+            vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+                = (0xeU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid));
+        }
+    } else if (vlSelf->tb_open_list_queue__DOT__i_wrt) {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__next_size 
+            = (0xfU & ((IData)(1U) + (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__curr_size)));
+        if ((((vlSelf->tb_open_list_queue__DOT__i_node_f 
+               < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[0U]) 
+              & (vlSelf->tb_open_list_queue__DOT__i_node_f 
+                 < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[1U])) 
+             & ((~ (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueueValid)) 
+                | (vlSelf->tb_open_list_queue__DOT__i_node_f 
+                   < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[0U])))) {
+            vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[0U] 
+                = vlSelf->tb_open_list_queue__DOT__i_node_f;
+            vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+                = (1U | (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid));
+            vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueue[0U] 
+                = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[0U];
+            vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid 
+                = ((0xeU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid)) 
+                   | (1U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueueValid)));
+        } else {
+            vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueue[0U] 
+                = vlSelf->tb_open_list_queue__DOT__i_node_f;
+            vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid 
+                = (1U | (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid));
+        }
+    } else if (vlSelf->tb_open_list_queue__DOT__i_read) {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__next_size 
+            = (0xfU & ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__curr_size) 
+                       - (IData)(1U)));
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[0U] = 0xffffffffU;
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+            = (0xeU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid));
+    }
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanPrevInQueue = 0U;
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextInQueue = 0U;
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanSameOutQueue = 0U;
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue = 0U;
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextNextOutQueue = 0U;
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanPrevInQueue 
+        = ((0xeU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanPrevInQueue)) 
+           | (1U & ((~ (IData)(vlSelf->tb_open_list_queue__DOT__i_wrt)) 
+                    | (vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[0U] 
+                       <= vlSelf->tb_open_list_queue__DOT__i_node_f))));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextInQueue 
+        = ((0xeU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextInQueue)) 
+           | (vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[0U] 
+              < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[1U]));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanSameOutQueue 
+        = ((0xeU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanSameOutQueue)) 
+           | (vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[0U] 
+              < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[0U]));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue 
+        = ((0xeU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue)) 
+           | (vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[0U] 
+              < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[1U]));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextNextOutQueue 
+        = ((0xeU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextNextOutQueue)) 
+           | (vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[0U] 
+              < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[2U]));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanPrevInQueue 
+        = ((0xdU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanPrevInQueue)) 
+           | ((vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[1U] 
+               < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[0U]) 
+              << 1U));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextInQueue 
+        = ((0xdU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextInQueue)) 
+           | ((vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[1U] 
+               < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[2U]) 
+              << 1U));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanSameOutQueue 
+        = ((0xdU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanSameOutQueue)) 
+           | ((vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[1U] 
+               < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[1U]) 
+              << 1U));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue 
+        = ((0xdU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue)) 
+           | ((vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[1U] 
+               < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[2U]) 
+              << 1U));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextNextOutQueue 
+        = ((0xdU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextNextOutQueue)) 
+           | ((vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[1U] 
+               < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[3U]) 
+              << 1U));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanPrevInQueue 
+        = ((0xbU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanPrevInQueue)) 
+           | ((vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[2U] 
+               < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[1U]) 
+              << 2U));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextInQueue 
+        = ((0xbU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextInQueue)) 
+           | ((vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[2U] 
+               < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[3U]) 
+              << 2U));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanSameOutQueue 
+        = ((0xbU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanSameOutQueue)) 
+           | ((vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[2U] 
+               < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[2U]) 
+              << 2U));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue 
+        = ((0xbU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue)) 
+           | ((vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[2U] 
+               < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[3U]) 
+              << 2U));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextNextOutQueue 
+        = (4U | (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextNextOutQueue));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanPrevInQueue 
+        = ((7U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanPrevInQueue)) 
+           | ((vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[3U] 
+               < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[2U]) 
+              << 3U));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextInQueue 
+        = (8U | (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextInQueue));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanSameOutQueue 
+        = ((7U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanSameOutQueue)) 
+           | ((vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[3U] 
+               < vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[3U]) 
+              << 3U));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue 
+        = (8U | (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue));
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextNextOutQueue 
+        = (8U | (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextNextOutQueue));
+    if ((1U & (((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanSameOutQueue) 
+                & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue)) 
+               & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanPrevInQueue)))) {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[0U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[0U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+            = ((0xeU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid)) 
+               | (1U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueueValid)));
+    } else if ((1U & (((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue) 
+                       & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextInQueue)) 
+                      & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextNextOutQueue)))) {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueue[1U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[1U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid 
+            = ((0xdU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid)) 
+               | (2U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueueValid)));
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[1U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[0U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+            = ((0xdU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid)) 
+               | (2U & ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueueValid) 
+                        << 1U)));
+    } else {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueue[1U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[0U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid 
+            = ((0xdU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid)) 
+               | (2U & ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueueValid) 
+                        << 1U)));
+    }
+    if ((2U & (((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanSameOutQueue) 
+                & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue)) 
+               & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanPrevInQueue)))) {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[1U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[1U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+            = ((0xdU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid)) 
+               | (2U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueueValid)));
+    } else if ((2U & (((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue) 
+                       & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextInQueue)) 
+                      & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextNextOutQueue)))) {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueue[2U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[2U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid 
+            = ((0xbU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid)) 
+               | (4U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueueValid)));
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[2U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[1U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+            = ((0xbU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid)) 
+               | (4U & ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueueValid) 
+                        << 1U)));
+    } else {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueue[2U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[1U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid 
+            = ((0xbU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid)) 
+               | (4U & ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueueValid) 
+                        << 1U)));
+    }
+    if ((4U & (((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanSameOutQueue) 
+                & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue)) 
+               & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanPrevInQueue)))) {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[2U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[2U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+            = ((0xbU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid)) 
+               | (4U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueueValid)));
+    } else if ((4U & (((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue) 
+                       & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextInQueue)) 
+                      & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextNextOutQueue)))) {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueue[3U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[3U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid 
+            = ((7U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid)) 
+               | (8U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueueValid)));
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[3U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[2U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+            = ((7U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid)) 
+               | (8U & ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueueValid) 
+                        << 1U)));
+    } else if ((IData)(((~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueueValid) 
+                            >> 3U)) & ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueueValid) 
+                                       >> 3U)))) {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[3U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[3U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+            = ((7U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid)) 
+               | (8U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueueValid)));
+    } else {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueue[3U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue[2U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid 
+            = ((7U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid)) 
+               | (8U & ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueueValid) 
+                        << 1U)));
+    }
+    if ((1U & ((~ (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueueValid)) 
+               & (~ (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid))))) {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[0U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[1U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+            = ((0xeU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid)) 
+               | (1U & ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueueValid) 
+                        >> 1U)));
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[1U] = 0xffffffffU;
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+            = (0xdU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid));
+    }
+    if ((1U & ((~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueueValid) 
+                   >> 1U)) & (~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid) 
+                                 >> 1U))))) {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[1U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[2U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+            = ((0xdU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid)) 
+               | (2U & ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueueValid) 
+                        >> 1U)));
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[2U] = 0xffffffffU;
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+            = (0xbU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid));
+    }
+    if ((1U & ((~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueueValid) 
+                   >> 2U)) & (~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid) 
+                                 >> 2U))))) {
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[2U] 
+            = vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue[3U];
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+            = ((0xbU & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid)) 
+               | (4U & ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueueValid) 
+                        >> 1U)));
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue[3U] = 0xffffffffU;
+        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid 
+            = (7U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid));
     }
 }
 
@@ -164,22 +431,16 @@ VL_ATTR_COLD void Vtb_open_list_queue___024root___dump_triggers__act(Vtb_open_li
         VL_DBG_MSGF("         No triggers active\n");
     }
     if ((1ULL & vlSelf->__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 0 is active: @([hybrid] tb_open_list_queue.u_open_list_queue.OB or [hybrid] tb_open_list_queue.u_open_list_queue.IB)\n");
+        VL_DBG_MSGF("         'act' region trigger index 0 is active: @(posedge tb_open_list_queue.CLK)\n");
     }
     if ((2ULL & vlSelf->__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 1 is active: @(posedge tb_open_list_queue.CLK or negedge tb_open_list_queue.RSTn)\n");
+        VL_DBG_MSGF("         'act' region trigger index 1 is active: @([true] __VdlySched.awaitingCurrentTime())\n");
     }
     if ((4ULL & vlSelf->__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 2 is active: @([true] __VdlySched.awaitingCurrentTime())\n");
+        VL_DBG_MSGF("         'act' region trigger index 2 is active: @(negedge tb_open_list_queue.CLK)\n");
     }
     if ((8ULL & vlSelf->__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 3 is active: @(negedge tb_open_list_queue.CLK)\n");
-    }
-    if ((0x10ULL & vlSelf->__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 4 is active: @(posedge tb_open_list_queue.RSTn)\n");
-    }
-    if ((0x20ULL & vlSelf->__VactTriggered.word(0U))) {
-        VL_DBG_MSGF("         'act' region trigger index 5 is active: @(posedge tb_open_list_queue.CLK)\n");
+        VL_DBG_MSGF("         'act' region trigger index 3 is active: @(posedge tb_open_list_queue.RSTn)\n");
     }
 }
 #endif  // VL_DEBUG
@@ -194,22 +455,16 @@ VL_ATTR_COLD void Vtb_open_list_queue___024root___dump_triggers__nba(Vtb_open_li
         VL_DBG_MSGF("         No triggers active\n");
     }
     if ((1ULL & vlSelf->__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 0 is active: @([hybrid] tb_open_list_queue.u_open_list_queue.OB or [hybrid] tb_open_list_queue.u_open_list_queue.IB)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 0 is active: @(posedge tb_open_list_queue.CLK)\n");
     }
     if ((2ULL & vlSelf->__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 1 is active: @(posedge tb_open_list_queue.CLK or negedge tb_open_list_queue.RSTn)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 1 is active: @([true] __VdlySched.awaitingCurrentTime())\n");
     }
     if ((4ULL & vlSelf->__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 2 is active: @([true] __VdlySched.awaitingCurrentTime())\n");
+        VL_DBG_MSGF("         'nba' region trigger index 2 is active: @(negedge tb_open_list_queue.CLK)\n");
     }
     if ((8ULL & vlSelf->__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 3 is active: @(negedge tb_open_list_queue.CLK)\n");
-    }
-    if ((0x10ULL & vlSelf->__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 4 is active: @(posedge tb_open_list_queue.RSTn)\n");
-    }
-    if ((0x20ULL & vlSelf->__VnbaTriggered.word(0U))) {
-        VL_DBG_MSGF("         'nba' region trigger index 5 is active: @(posedge tb_open_list_queue.CLK)\n");
+        VL_DBG_MSGF("         'nba' region trigger index 3 is active: @(posedge tb_open_list_queue.RSTn)\n");
     }
 }
 #endif  // VL_DEBUG
@@ -225,50 +480,30 @@ VL_ATTR_COLD void Vtb_open_list_queue___024root___ctor_var_reset(Vtb_open_list_q
     vlSelf->tb_open_list_queue__DOT__i_read = VL_RAND_RESET_I(1);
     vlSelf->tb_open_list_queue__DOT__i_valid = VL_RAND_RESET_I(1);
     vlSelf->tb_open_list_queue__DOT__i_node_f = VL_RAND_RESET_I(32);
-    vlSelf->tb_open_list_queue__DOT__i_node_i = VL_RAND_RESET_I(16);
-    vlSelf->tb_open_list_queue__DOT__i_node_j = VL_RAND_RESET_I(16);
-    vlSelf->tb_open_list_queue__DOT__o_valid = VL_RAND_RESET_I(1);
-    vlSelf->tb_open_list_queue__DOT__o_node_f = VL_RAND_RESET_I(32);
-    vlSelf->tb_open_list_queue__DOT__o_node_i = VL_RAND_RESET_I(16);
-    vlSelf->tb_open_list_queue__DOT__o_node_j = VL_RAND_RESET_I(16);
-    vlSelf->tb_open_list_queue__DOT__data_f = VL_RAND_RESET_I(32);
-    vlSelf->tb_open_list_queue__DOT__data_i = VL_RAND_RESET_I(16);
-    vlSelf->tb_open_list_queue__DOT__data_j = VL_RAND_RESET_I(16);
-    for (int __Vi0 = 0; __Vi0 < 10; ++__Vi0) {
-        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__IB[__Vi0] = VL_RAND_RESET_Q(64);
-    }
-    for (int __Vi0 = 0; __Vi0 < 10; ++__Vi0) {
-        vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__OB[__Vi0] = VL_RAND_RESET_Q(64);
-    }
-    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__ib_count = 0;
-    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__ob_count = 0;
-    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__valid = VL_RAND_RESET_I(1);
-    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state = VL_RAND_RESET_I(3);
-    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__next_state = VL_RAND_RESET_I(3);
-    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__STATE_OPERATION__DOT__unnamedblk1__DOT__itr = 0;
-    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__STATE_OPERATION__DOT__unnamedblk2__DOT__itr = 0;
-    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT____Vlvbound_h8980632d__0 = VL_RAND_RESET_Q(64);
-    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT____Vlvbound_h8980632d__1 = VL_RAND_RESET_Q(64);
-    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT____Vlvbound_hc96805db__0 = VL_RAND_RESET_Q(64);
-    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT____Vlvbound_h9dc5a6d8__1 = VL_RAND_RESET_Q(64);
-    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT____Vlvbound_hc96805db__1 = VL_RAND_RESET_Q(64);
-    for (int __Vi0 = 0; __Vi0 < 10; ++__Vi0) {
-        vlSelf->__Vtrigprevexpr___TOP__tb_open_list_queue__DOT__u_open_list_queue__DOT__OB__0[__Vi0] = VL_RAND_RESET_Q(64);
-    }
-    for (int __Vi0 = 0; __Vi0 < 10; ++__Vi0) {
-        vlSelf->__Vtrigprevexpr___TOP__tb_open_list_queue__DOT__u_open_list_queue__DOT__IB__0[__Vi0] = VL_RAND_RESET_Q(64);
-    }
-    vlSelf->__VstlDidInit = 0;
-    for (int __Vi0 = 0; __Vi0 < 10; ++__Vi0) {
-        vlSelf->__Vtrigprevexpr___TOP__tb_open_list_queue__DOT__u_open_list_queue__DOT__OB__1[__Vi0] = VL_RAND_RESET_Q(64);
-    }
-    for (int __Vi0 = 0; __Vi0 < 10; ++__Vi0) {
-        vlSelf->__Vtrigprevexpr___TOP__tb_open_list_queue__DOT__u_open_list_queue__DOT__IB__1[__Vi0] = VL_RAND_RESET_Q(64);
-    }
+    vlSelf->tb_open_list_queue__DOT__o_ready_deq = VL_RAND_RESET_I(1);
+    vlSelf->tb_open_list_queue__DOT__o_ready_enq = VL_RAND_RESET_I(1);
+    vlSelf->tb_open_list_queue__DOT__o_ready_rep = VL_RAND_RESET_I(1);
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__next_size = VL_RAND_RESET_I(4);
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__curr_size = VL_RAND_RESET_I(4);
+    VL_RAND_RESET_W(128, vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueue);
+    VL_RAND_RESET_W(128, vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueue);
+    VL_RAND_RESET_W(128, vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueue);
+    VL_RAND_RESET_W(128, vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueue);
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__inQueueValid = VL_RAND_RESET_I(4);
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextInQueueValid = VL_RAND_RESET_I(4);
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__outQueueValid = VL_RAND_RESET_I(4);
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__nextOutQueueValid = VL_RAND_RESET_I(4);
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanPrevInQueue = VL_RAND_RESET_I(4);
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextInQueue = VL_RAND_RESET_I(4);
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanSameOutQueue = VL_RAND_RESET_I(4);
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextOutQueue = VL_RAND_RESET_I(4);
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__lessThanNextNextOutQueue = VL_RAND_RESET_I(4);
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__i = VL_RAND_RESET_I(32);
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__curr_state = 0;
+    vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__next_state = 0;
     vlSelf->__Vtrigprevexpr___TOP__tb_open_list_queue__DOT__CLK__0 = VL_RAND_RESET_I(1);
     vlSelf->__Vtrigprevexpr___TOP__tb_open_list_queue__DOT__RSTn__0 = VL_RAND_RESET_I(1);
-    vlSelf->__VactDidInit = 0;
-    for (int __Vi0 = 0; __Vi0 < 7; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 6; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = 0;
     }
 }
