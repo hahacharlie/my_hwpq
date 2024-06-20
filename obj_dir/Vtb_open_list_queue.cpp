@@ -97,13 +97,13 @@ VL_ATTR_COLD void Vtb_open_list_queue::final() {
 
 const char* Vtb_open_list_queue::hierName() const { return vlSymsp->name(); }
 const char* Vtb_open_list_queue::modelName() const { return "Vtb_open_list_queue"; }
-unsigned Vtb_open_list_queue::threads() const { return 1; }
+unsigned Vtb_open_list_queue::threads() const { return 8; }
 void Vtb_open_list_queue::prepareClone() const { contextp()->prepareClone(); }
 void Vtb_open_list_queue::atClone() const {
-    contextp()->threadPoolpOnClone();
+    vlSymsp->__Vm_threadPoolp = static_cast<VlThreadPool*>(contextp()->threadPoolpOnClone());
 }
 std::unique_ptr<VerilatedTraceConfig> Vtb_open_list_queue::traceConfig() const {
-    return std::unique_ptr<VerilatedTraceConfig>{new VerilatedTraceConfig{false, false, false}};
+    return std::unique_ptr<VerilatedTraceConfig>{new VerilatedTraceConfig{true, false, false}};
 };
 
 //============================================================

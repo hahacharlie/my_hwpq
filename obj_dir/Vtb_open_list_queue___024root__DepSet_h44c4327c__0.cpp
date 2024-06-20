@@ -389,35 +389,22 @@ VL_INLINE_OPT void Vtb_open_list_queue___024root___act_comb__TOP__1(Vtb_open_lis
     }
 }
 
-void Vtb_open_list_queue___024root___nba_sequent__TOP__0(Vtb_open_list_queue___024root* vlSelf);
-
-void Vtb_open_list_queue___024root___eval_nba(Vtb_open_list_queue___024root* vlSelf) {
+VL_INLINE_OPT void Vtb_open_list_queue___024root___nba_sequent__TOP__1(Vtb_open_list_queue___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root___eval_nba\n"); );
-    // Body
-    if ((2ULL & vlSelf->__VnbaTriggered.word(0U))) {
-        Vtb_open_list_queue___024root___nba_sequent__TOP__0(vlSelf);
-        vlSelf->__Vm_traceActivity[4U] = 1U;
-    }
-    if ((0x32ULL & vlSelf->__VnbaTriggered.word(0U))) {
-        Vtb_open_list_queue___024root___act_comb__TOP__0(vlSelf);
-    }
-    if ((0x33ULL & vlSelf->__VnbaTriggered.word(0U))) {
-        Vtb_open_list_queue___024root___act_comb__TOP__1(vlSelf);
-        vlSelf->__Vm_traceActivity[5U] = 1U;
-    }
-}
-
-VL_INLINE_OPT void Vtb_open_list_queue___024root___nba_sequent__TOP__0(Vtb_open_list_queue___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
-    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root___nba_sequent__TOP__0\n"); );
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root___nba_sequent__TOP__1\n"); );
     // Body
     vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state 
         = ((IData)(vlSelf->tb_open_list_queue__DOT__RSTn)
             ? (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__next_state)
             : 0U);
+}
+
+VL_INLINE_OPT void Vtb_open_list_queue___024root___nba_sequent__TOP__3(Vtb_open_list_queue___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root___nba_sequent__TOP__3\n"); );
+    // Body
     if ((1U & (~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state) 
                   >> 2U)))) {
         if ((2U & (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state))) {
@@ -425,12 +412,67 @@ VL_INLINE_OPT void Vtb_open_list_queue___024root___nba_sequent__TOP__0(Vtb_open_
                 vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__STATE_OPERATION__DOT__unnamedblk2__DOT__itr = 9U;
             }
         }
+    }
+}
+
+VL_INLINE_OPT void Vtb_open_list_queue___024root___nba_sequent__TOP__4(Vtb_open_list_queue___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root___nba_sequent__TOP__4\n"); );
+    // Body
+    if ((1U & (~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state) 
+                  >> 2U)))) {
         if ((1U & (~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state) 
                       >> 1U)))) {
             if ((1U & (~ (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state)))) {
                 vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__STATE_OPERATION__DOT__unnamedblk1__DOT__itr = 0xaU;
+            }
+        }
+    }
+}
+
+VL_INLINE_OPT void Vtb_open_list_queue___024root___nba_sequent__TOP__5(Vtb_open_list_queue___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root___nba_sequent__TOP__5\n"); );
+    // Body
+    if ((1U & (~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state) 
+                  >> 2U)))) {
+        if ((1U & (~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state) 
+                      >> 1U)))) {
+            if ((1U & (~ (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state)))) {
                 vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__ob_count = 0U;
+            }
+        }
+    }
+}
+
+VL_INLINE_OPT void Vtb_open_list_queue___024root___nba_sequent__TOP__6(Vtb_open_list_queue___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root___nba_sequent__TOP__6\n"); );
+    // Body
+    if ((1U & (~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state) 
+                  >> 2U)))) {
+        if ((1U & (~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state) 
+                      >> 1U)))) {
+            if ((1U & (~ (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state)))) {
                 vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__valid = 0U;
+            }
+        }
+    }
+}
+
+VL_INLINE_OPT void Vtb_open_list_queue___024root___nba_sequent__TOP__7(Vtb_open_list_queue___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root___nba_sequent__TOP__7\n"); );
+    // Body
+    if ((1U & (~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state) 
+                  >> 2U)))) {
+        if ((1U & (~ ((IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state) 
+                      >> 1U)))) {
+            if ((1U & (~ (IData)(vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__current_state)))) {
                 vlSelf->tb_open_list_queue__DOT__u_open_list_queue__DOT__ib_count = 0U;
             }
         }
@@ -493,6 +535,8 @@ bool Vtb_open_list_queue___024root___eval_phase__act(Vtb_open_list_queue___024ro
     }
     return (__VactExecute);
 }
+
+void Vtb_open_list_queue___024root___eval_nba(Vtb_open_list_queue___024root* vlSelf);
 
 bool Vtb_open_list_queue___024root___eval_phase__nba(Vtb_open_list_queue___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning

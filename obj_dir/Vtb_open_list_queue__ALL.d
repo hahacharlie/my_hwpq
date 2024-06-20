@@ -9,6 +9,7 @@ Vtb_open_list_queue__ALL.o: Vtb_open_list_queue__ALL.cpp \
  /usr/share/verilator/include/verilated_vcd_c.h \
  /usr/share/verilator/include/verilated.h \
  /usr/share/verilator/include/verilated_trace.h Vtb_open_list_queue.h \
+ /usr/share/verilator/include/verilated_threads.h \
  Vtb_open_list_queue___024root.h \
  /usr/share/verilator/include/verilated_timing.h \
  Vtb_open_list_queue___024root__DepSet_hb3413c71__0.cpp \

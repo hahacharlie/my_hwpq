@@ -23,7 +23,7 @@ waveform.vcd: .stamp.verilate
 .stamp.verilate: $(MODULE).sv
 	@echo
 	@echo "### VERILATING ###"
-	verilator -j 0 -Wall --timing --trace --trace-coverage --trace-depth 20 --trace-params --trace-structs --binary tb_$(MODULE).sv
+	verilator -j 0 -Wall --timing --trace --clk CLK --x-assign unique --x-initial unique -threads 8 --trace-coverage --trace-max-array 256 --trace-params --trace-structs --binary tb_$(MODULE).sv
 	@touch .stamp.verilate
 
 .PHONY: clean

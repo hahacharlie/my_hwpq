@@ -77,6 +77,7 @@ VL_ATTR_COLD void Vtb_open_list_queue___024root___eval_stl(Vtb_open_list_queue__
     // Body
     if ((1ULL & vlSelf->__VstlTriggered.word(0U))) {
         Vtb_open_list_queue___024root___stl_sequent__TOP__0(vlSelf);
+        vlSelf->__Vm_traceActivity[6U] = 1U;
         vlSelf->__Vm_traceActivity[5U] = 1U;
         vlSelf->__Vm_traceActivity[4U] = 1U;
         vlSelf->__Vm_traceActivity[3U] = 1U;
@@ -86,6 +87,7 @@ VL_ATTR_COLD void Vtb_open_list_queue___024root___eval_stl(Vtb_open_list_queue__
     }
     if ((3ULL & vlSelf->__VstlTriggered.word(0U))) {
         Vtb_open_list_queue___024root___act_comb__TOP__1(vlSelf);
+        vlSelf->__Vm_traceActivity[6U] = 1U;
         vlSelf->__Vm_traceActivity[5U] = 1U;
         vlSelf->__Vm_traceActivity[4U] = 1U;
         vlSelf->__Vm_traceActivity[3U] = 1U;
@@ -266,7 +268,7 @@ VL_ATTR_COLD void Vtb_open_list_queue___024root___ctor_var_reset(Vtb_open_list_q
     vlSelf->__Vtrigprevexpr___TOP__tb_open_list_queue__DOT__CLK__0 = VL_RAND_RESET_I(1);
     vlSelf->__Vtrigprevexpr___TOP__tb_open_list_queue__DOT__RSTn__0 = VL_RAND_RESET_I(1);
     vlSelf->__VactDidInit = 0;
-    for (int __Vi0 = 0; __Vi0 < 6; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 7; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = 0;
     }
 }

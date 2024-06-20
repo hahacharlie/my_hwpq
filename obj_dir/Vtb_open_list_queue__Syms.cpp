@@ -39,6 +39,7 @@ Vtb_open_list_queue__Syms::Vtb_open_list_queue__Syms(VerilatedContext* contextp,
     : VerilatedSyms{contextp}
     // Setup internal state of the Syms class
     , __Vm_modelp{modelp}
+    , __Vm_threadPoolp{static_cast<VlThreadPool*>(contextp->threadPoolp())}
     // Setup module instances
     , TOP{this, namep}
 {

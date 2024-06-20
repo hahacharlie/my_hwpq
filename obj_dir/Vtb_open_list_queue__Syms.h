@@ -30,6 +30,12 @@ class alignas(VL_CACHE_LINE_BYTES)Vtb_open_list_queue__Syms final : public Veril
     VlDeleter __Vm_deleter;
     bool __Vm_didInit = false;
 
+    // MULTI-THREADING
+    VlThreadPool* __Vm_threadPoolp;
+    bool __Vm_even_cycle__ico = false;
+    bool __Vm_even_cycle__act = false;
+    bool __Vm_even_cycle__nba = false;
+
     // MODULE INSTANCE STATE
     Vtb_open_list_queue___024root  TOP;
 

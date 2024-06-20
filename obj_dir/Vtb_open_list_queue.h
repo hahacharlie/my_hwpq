@@ -9,6 +9,7 @@
 #define VERILATED_VTB_OPEN_LIST_QUEUE_H_  // guard
 
 #include "verilated.h"
+#include "verilated_threads.h"
 
 class Vtb_open_list_queue__Syms;
 class Vtb_open_list_queue___024root;

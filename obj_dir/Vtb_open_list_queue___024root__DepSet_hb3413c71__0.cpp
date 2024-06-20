@@ -356,3 +356,197 @@ void Vtb_open_list_queue___024root___eval_triggers__act(Vtb_open_list_queue___02
     }
 #endif
 }
+
+void Vtb_open_list_queue___024root____Vthread__nba__0(void* voidSelf, bool even_cycle);
+void Vtb_open_list_queue___024root____Vthread__nba__1(void* voidSelf, bool even_cycle);
+void Vtb_open_list_queue___024root____Vthread__nba__2(void* voidSelf, bool even_cycle);
+void Vtb_open_list_queue___024root____Vthread__nba__3(void* voidSelf, bool even_cycle);
+void Vtb_open_list_queue___024root____Vthread__nba__4(void* voidSelf, bool even_cycle);
+
+void Vtb_open_list_queue___024root___eval_nba(Vtb_open_list_queue___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root___eval_nba\n"); );
+    // Body
+    vlSymsp->__Vm_even_cycle__nba = !vlSymsp->__Vm_even_cycle__nba;
+    vlSymsp->__Vm_threadPoolp->workerp(0)->addTask(&Vtb_open_list_queue___024root____Vthread__nba__0, vlSelf, vlSymsp->__Vm_even_cycle__nba);
+    vlSymsp->__Vm_threadPoolp->workerp(1)->addTask(&Vtb_open_list_queue___024root____Vthread__nba__1, vlSelf, vlSymsp->__Vm_even_cycle__nba);
+    vlSymsp->__Vm_threadPoolp->workerp(2)->addTask(&Vtb_open_list_queue___024root____Vthread__nba__2, vlSelf, vlSymsp->__Vm_even_cycle__nba);
+    vlSymsp->__Vm_threadPoolp->workerp(3)->addTask(&Vtb_open_list_queue___024root____Vthread__nba__3, vlSelf, vlSymsp->__Vm_even_cycle__nba);
+    Vtb_open_list_queue___024root____Vthread__nba__4(vlSelf, vlSymsp->__Vm_even_cycle__nba);
+    Verilated::mtaskId(0);
+    vlSelf->__Vm_mtaskstate_final__nba.waitUntilUpstreamDone(vlSymsp->__Vm_even_cycle__nba);
+}
+
+void Vtb_open_list_queue___024root___nba_sequent__TOP__1(Vtb_open_list_queue___024root* vlSelf);
+
+void Vtb_open_list_queue___024root__nba_mtask1(Vtb_open_list_queue___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root__nba_mtask1\n"); );
+    // Body
+    Verilated::mtaskId(1);
+    if ((2ULL & vlSelf->__VnbaTriggered.word(0U))) {
+        Vtb_open_list_queue___024root___nba_sequent__TOP__1(vlSelf);
+    }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+}
+
+void Vtb_open_list_queue___024root___nba_sequent__TOP__3(Vtb_open_list_queue___024root* vlSelf);
+
+void Vtb_open_list_queue___024root__nba_mtask3(Vtb_open_list_queue___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root__nba_mtask3\n"); );
+    // Body
+    Verilated::mtaskId(3);
+    if ((2ULL & vlSelf->__VnbaTriggered.word(0U))) {
+        Vtb_open_list_queue___024root___nba_sequent__TOP__3(vlSelf);
+    }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+}
+
+void Vtb_open_list_queue___024root___nba_sequent__TOP__4(Vtb_open_list_queue___024root* vlSelf);
+
+void Vtb_open_list_queue___024root__nba_mtask4(Vtb_open_list_queue___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root__nba_mtask4\n"); );
+    // Body
+    Verilated::mtaskId(4);
+    if ((2ULL & vlSelf->__VnbaTriggered.word(0U))) {
+        Vtb_open_list_queue___024root___nba_sequent__TOP__4(vlSelf);
+    }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+}
+
+void Vtb_open_list_queue___024root___nba_sequent__TOP__5(Vtb_open_list_queue___024root* vlSelf);
+
+void Vtb_open_list_queue___024root__nba_mtask5(Vtb_open_list_queue___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root__nba_mtask5\n"); );
+    // Body
+    Verilated::mtaskId(5);
+    if ((2ULL & vlSelf->__VnbaTriggered.word(0U))) {
+        Vtb_open_list_queue___024root___nba_sequent__TOP__5(vlSelf);
+        vlSelf->__Vm_traceActivity[4U] = 1U;
+    }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+}
+
+void Vtb_open_list_queue___024root___nba_sequent__TOP__6(Vtb_open_list_queue___024root* vlSelf);
+
+void Vtb_open_list_queue___024root__nba_mtask6(Vtb_open_list_queue___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root__nba_mtask6\n"); );
+    // Body
+    Verilated::mtaskId(6);
+    if ((2ULL & vlSelf->__VnbaTriggered.word(0U))) {
+        Vtb_open_list_queue___024root___nba_sequent__TOP__6(vlSelf);
+    }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+}
+
+void Vtb_open_list_queue___024root___nba_sequent__TOP__7(Vtb_open_list_queue___024root* vlSelf);
+
+void Vtb_open_list_queue___024root__nba_mtask7(Vtb_open_list_queue___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root__nba_mtask7\n"); );
+    // Body
+    Verilated::mtaskId(7);
+    if ((2ULL & vlSelf->__VnbaTriggered.word(0U))) {
+        Vtb_open_list_queue___024root___nba_sequent__TOP__7(vlSelf);
+        vlSelf->__Vm_traceActivity[5U] = 1U;
+    }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+}
+
+void Vtb_open_list_queue___024root___act_comb__TOP__0(Vtb_open_list_queue___024root* vlSelf);
+
+void Vtb_open_list_queue___024root__nba_mtask8(Vtb_open_list_queue___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root__nba_mtask8\n"); );
+    // Body
+    Verilated::mtaskId(8);
+    if ((0x32ULL & vlSelf->__VnbaTriggered.word(0U))) {
+        Vtb_open_list_queue___024root___act_comb__TOP__0(vlSelf);
+    }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+}
+
+void Vtb_open_list_queue___024root___act_comb__TOP__1(Vtb_open_list_queue___024root* vlSelf);
+
+void Vtb_open_list_queue___024root__nba_mtask9(Vtb_open_list_queue___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root__nba_mtask9\n"); );
+    // Body
+    Verilated::mtaskId(9);
+    if ((0x33ULL & vlSelf->__VnbaTriggered.word(0U))) {
+        Vtb_open_list_queue___024root___act_comb__TOP__1(vlSelf);
+        vlSelf->__Vm_traceActivity[6U] = 1U;
+    }
+    Verilated::endOfThreadMTask(vlSymsp->__Vm_evalMsgQp);
+}
+
+void Vtb_open_list_queue___024root____Vthread__nba__0(void* voidSelf, bool even_cycle) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root____Vthread__nba__0\n"); );
+    // Body
+    Vtb_open_list_queue___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vtb_open_list_queue___024root*>(voidSelf);
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    Vtb_open_list_queue___024root__nba_mtask1(vlSelf);
+    vlSelf->__Vm_mtaskstate_3.signalUpstreamDone(even_cycle);
+    vlSelf->__Vm_mtaskstate_4.signalUpstreamDone(even_cycle);
+    vlSelf->__Vm_mtaskstate_5.signalUpstreamDone(even_cycle);
+    vlSelf->__Vm_mtaskstate_6.signalUpstreamDone(even_cycle);
+    Vtb_open_list_queue___024root__nba_mtask7(vlSelf);
+    vlSelf->__Vm_mtaskstate_8.signalUpstreamDone(even_cycle);
+    Vtb_open_list_queue___024root__nba_mtask9(vlSelf);
+    vlSelf->__Vm_mtaskstate_final__nba.signalUpstreamDone(even_cycle);
+}
+
+void Vtb_open_list_queue___024root____Vthread__nba__1(void* voidSelf, bool even_cycle) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root____Vthread__nba__1\n"); );
+    // Body
+    Vtb_open_list_queue___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vtb_open_list_queue___024root*>(voidSelf);
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    vlSelf->__Vm_mtaskstate_5.waitUntilUpstreamDone(even_cycle);
+    Vtb_open_list_queue___024root__nba_mtask5(vlSelf);
+    vlSelf->__Vm_mtaskstate_8.waitUntilUpstreamDone(even_cycle);
+    Vtb_open_list_queue___024root__nba_mtask8(vlSelf);
+    vlSelf->__Vm_mtaskstate_final__nba.signalUpstreamDone(even_cycle);
+}
+
+void Vtb_open_list_queue___024root____Vthread__nba__2(void* voidSelf, bool even_cycle) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root____Vthread__nba__2\n"); );
+    // Body
+    Vtb_open_list_queue___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vtb_open_list_queue___024root*>(voidSelf);
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    vlSelf->__Vm_mtaskstate_4.waitUntilUpstreamDone(even_cycle);
+    Vtb_open_list_queue___024root__nba_mtask4(vlSelf);
+    vlSelf->__Vm_mtaskstate_final__nba.signalUpstreamDone(even_cycle);
+}
+
+void Vtb_open_list_queue___024root____Vthread__nba__3(void* voidSelf, bool even_cycle) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root____Vthread__nba__3\n"); );
+    // Body
+    Vtb_open_list_queue___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vtb_open_list_queue___024root*>(voidSelf);
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    vlSelf->__Vm_mtaskstate_6.waitUntilUpstreamDone(even_cycle);
+    Vtb_open_list_queue___024root__nba_mtask6(vlSelf);
+    vlSelf->__Vm_mtaskstate_final__nba.signalUpstreamDone(even_cycle);
+}
+
+void Vtb_open_list_queue___024root____Vthread__nba__4(void* voidSelf, bool even_cycle) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_open_list_queue___024root____Vthread__nba__4\n"); );
+    // Body
+    Vtb_open_list_queue___024root* const __restrict vlSelf VL_ATTR_UNUSED = static_cast<Vtb_open_list_queue___024root*>(voidSelf);
+    Vtb_open_list_queue__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    vlSelf->__Vm_mtaskstate_3.waitUntilUpstreamDone(even_cycle);
+    Vtb_open_list_queue___024root__nba_mtask3(vlSelf);
+    vlSelf->__Vm_mtaskstate_final__nba.signalUpstreamDone(even_cycle);
+}

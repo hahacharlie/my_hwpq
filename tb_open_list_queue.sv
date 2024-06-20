@@ -63,7 +63,7 @@ module tb_open_list_queue ();
     RSTn = 1;
   end
 
-  initial begin
+  initial begin : TEST
 
     $dumpfile("tb_open_list_queue.vcd");
     $dumpvars(0, tb_open_list_queue);
