@@ -5,7 +5,7 @@
 
 module tb_open_list_queue ();
 
-  localparam QUEUE_SIZE = 4;
+  localparam QUEUE_SIZE = 8;
   localparam DATA_WIDTH = 32;
   localparam MAP_WIDTH = 16;
   localparam MAP_HEIGHT = 16;
@@ -72,14 +72,22 @@ module tb_open_list_queue ();
     // Enqueue operations
     write(5);
     write(2);
+    write(11);
+    write(14);
+    write(10);
     write(3);
     write(7);
+    write(1);
 
     // Dequeue operations and validate order
+    read_and_check(1);
     read_and_check(2);
     read_and_check(3);
     read_and_check(5);
     read_and_check(7);
+    read_and_check(10);
+    read_and_check(11);
+    read_and_check(14);
 
     $finish();
   end
@@ -96,6 +104,8 @@ module tb_open_list_queue ();
 
     i_wrt = 0;
 
+    @(posedge CLK);
+
   endtask
 
   task read_and_check(input int expected_f);
@@ -104,15 +114,18 @@ module tb_open_list_queue ();
     if (o_valid) begin
       $display("Read data: %d", o_node_f);
       assert (o_node_f == expected_f)
-      else $fatal("Assertion failed: Expected %d, got %d", expected_f, o_node_f);
+      else $error("Assertion failed: Expected %d, got %d", expected_f, o_node_f);
     end else begin
       $display("Error - The queue is empty");
       assert (0)
-      else $fatal("Assertion failed: Expected %d, but queue was empty", expected_f);
+      else $error("Assertion failed: Expected %d, but queue was empty", expected_f);
     end
 
     repeat (2) @(posedge CLK);
+
     i_read = 0;
+
+    @(posedge CLK);
 
   endtask
 

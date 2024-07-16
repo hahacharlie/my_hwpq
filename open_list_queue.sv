@@ -158,9 +158,10 @@ module open_list_queue #(
   //========================================================================
 
   typedef enum {
-    STATE1,
-    STATE2
+    WRITE,
+    READ
   } State;
+
   State curr_state;
   State next_state;
 
@@ -168,29 +169,29 @@ module open_list_queue #(
 
     case (curr_state)
 
-      STATE1: begin
+      WRITE: begin
         o_ready_deq = 1;
         o_ready_enq = 1;
         o_ready_rep = 1;
         if ((i_read && !i_wrt) || (i_read && i_wrt)) begin
-          next_state = STATE2;
+          next_state = READ;
         end else begin
-          next_state = STATE1;
+          next_state = WRITE;
         end
       end
 
-      STATE2: begin
-        o_ready_deq = 0;
-        o_ready_enq = 1;
+      READ: begin
+        o_ready_deq = 1;
+        o_ready_enq = 0;
         o_ready_rep = 0;
-        next_state  = STATE1;
+        next_state  = WRITE;
       end
 
       default: begin
         o_ready_deq = 0;
         o_ready_enq = 0;
         o_ready_rep = 0;
-        next_state  = STATE1;
+        next_state  = WRITE;
       end
 
     endcase
@@ -200,8 +201,10 @@ module open_list_queue #(
   always_ff @(posedge CLK) begin
 
     if (!RSTn) begin
+
       curr_size <= '0;
-      curr_state <= STATE1;
+      curr_state <= WRITE;
+
       inQueueValid <= '0;
       outQueueValid <= '0;
 
